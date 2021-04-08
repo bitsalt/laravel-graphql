@@ -6,7 +6,7 @@ This is a test site to work with using GraphQL and Laravel
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-###GraphQL MIT License
+##GraphQL MIT License
 
 Copyright (c) GraphQL Contributors
 
