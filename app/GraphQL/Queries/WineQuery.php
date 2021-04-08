@@ -1,0 +1,39 @@
+<?php
+
+
+namespace App\GraphQL\Queries;
+
+use App\Models\Wine;
+use Rebing\GraphQL\Support\Facades\GraphQL;
+use GraphQL\Type\Definition\Type;
+use Rebing\GraphQL\Support\Query;
+
+class WineQuery extends Query
+{
+
+    protected $attributes = [
+        'name' => 'wine',
+    ];
+
+    public function type(): Type
+    {
+//        return Type::nonNull(Type::listOf(Type::nonNull(GraphQL::type('Wine'))));
+        return GraphQL::type('Wine');
+    }
+
+    public function args(): array
+    {
+        return [
+            'id' => [
+                'name' => 'id',
+                'type' => Type::int(),
+                'rules' => ['required']
+            ],
+        ];
+    }
+
+    public function resolve($root, $args)
+    {
+        return Wine::findOrFail($args['id']);
+    }
+}
